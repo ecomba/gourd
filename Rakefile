@@ -7,9 +7,9 @@ begin
     gem.name = "gourd"
     gem.summary = %Q{Feature activation framework}
     gem.description = %Q{Gourd is a Story XP like project management tool focusing on driving the development by including only those stories and scenarios that we should be working on at this moment to keep focused}
-    gem.email = "ecomba@nexwerk.com"
+    gem.email = "ecomba@nexwerk.com, steve.tooke@gmail.com"
     gem.homepage = "http://github.com/ecomba/gourd"
-    gem.authors = ["Enrique Comba Riepenhausen"]
+    gem.authors = ["Enrique Comba Riepenhausen", "Steve Tooke"]
     gem.add_development_dependency "rspec"
     gem.add_development_dependency "cucumber"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
