@@ -4,6 +4,11 @@ class Situation
   def initialize(steps)
     @steps = steps
   end
+
+  def eql?(other)
+    self.steps.eql? other.steps
+  end
+  alias :== :eql? 
 end
 
 class Background < Situation
@@ -16,5 +21,25 @@ class Scenario < Situation
     @name = name
     super(steps)
   end
+
+  def eql?(other)
+    self.name == other.name && super(other)
+  end
 end
 
+class SituationBuilder
+  attr :steps
+
+  def initialize
+    @steps= []
+  end
+
+  def add_step(step)
+    @steps<< step
+    self
+  end
+
+  def build
+    Situation.new(@steps)
+  end
+end
