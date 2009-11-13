@@ -13,7 +13,7 @@ class Feature
 end
 
 class FeatureFactory
-  attr_reader :feature_name, :scenarios
+  attr_reader :feature_name, :scenarios, :story
 
   def initialize(background_builder, scenario_builder)
     @background_builder= background_builder
@@ -24,6 +24,11 @@ class FeatureFactory
   def new_feature(name)
     @feature_name= name
     self 
+  end
+
+  def with_story(story)
+    @story = story
+    self
   end
 
   def background_with_steps(&proc)
@@ -41,7 +46,7 @@ class FeatureFactory
   end
 
   def build
-    Feature.new(feature_name, :scenarios => scenarios.map {|s| s.build}, :background => background.build)
+    Feature.new(feature_name, :scenarios => scenarios.map {|s| s.build}, :background => background.build, :story => story)
   end
 
 end

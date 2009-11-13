@@ -43,3 +43,16 @@ class SituationBuilder
     Situation.new(@steps)
   end
 end
+
+class BackgroundBuilder < SituationBuilder; end
+
+class ScenarioBuilder < SituationBuilder
+  def initialize(name)
+    @name = name
+    super()
+  end
+
+  def build
+    Scenario.new(@name, @steps)
+  end
+end

@@ -70,12 +70,16 @@ describe "FeatureFactory" do
       @factory.add_scenario_with_steps("My scenario") {|scenario| scenario.add_step("my step")}.scenarios.first.steps.should == ["my step"]
     end
 
+    it 'adds the story to the feature' do
+      @factory.with_story("my life").story.should == 'my life'
+    end
+
     it "constructs the feature and its situations" do
       @background_builder.should_receive(:build).and_return(Background.new(["BS"]))
       @scenario_builder.should_receive(:build).and_return(Scenario.new("S", ["SA"]))
-      @factory.background_with_steps{|b| b.add_step("BS")}.add_scenario_with_steps("S") {|s| s.add_step("SA")}
+      @factory.with_story('The whole of existence').background_with_steps{|b| b.add_step("BS")}.add_scenario_with_steps("S") {|s| s.add_step("SA")}
       @factory.build.should == Feature.new("My Feature", :background => Background.new(["BS"]), 
-              :scenarios => [Scenario.new("S", ["SA"])])
+              :scenarios => [Scenario.new("S", ["SA"])], :story => 'The whole of existence')
     end
   end
 end
