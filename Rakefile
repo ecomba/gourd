@@ -33,17 +33,6 @@ end
 task :spec => :check_dependencies
 
 begin
-  require 'cucumber/rake/task'
-  Cucumber::Rake::Task.new(:features)
-
-  task :features => :check_dependencies
-rescue LoadError
-  task :features do
-    abort "Cucumber is not available. In order to run features, you must: sudo gem install cucumber"
-  end
-end
-
-begin
   require 'reek/rake_task'
   Reek::RakeTask.new do |t|
     t.fail_on_error = true
