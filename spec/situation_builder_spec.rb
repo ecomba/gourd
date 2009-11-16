@@ -29,8 +29,9 @@ describe "Building a situation" do
 
   context "building a scenario" do
     before(:each) do
-      @builder = ScenarioBuilder.new("Building and app")
-      @situation = Scenario.new("Building an app", [])
+      @builder = ScenarioBuilder.new
+      @builder.with_name('Building an app')
+      @situation = Scenario.new("Building another app", [])
     end
 
     it_should_behave_like "situation builder"

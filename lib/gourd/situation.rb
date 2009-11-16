@@ -47,9 +47,13 @@ end
 class BackgroundBuilder < SituationBuilder; end
 
 class ScenarioBuilder < SituationBuilder
-  def initialize(name)
+  def initialize
+    super
+  end
+
+  def with_name(name)
     @name = name
-    super()
+    self
   end
 
   def build
